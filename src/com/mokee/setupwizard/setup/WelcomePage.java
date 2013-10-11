@@ -17,91 +17,95 @@
 package com.mokee.setupwizard.setup;
 
 import com.android.internal.app.LocalePicker;
-import com.android.internal.app.LocalePicker.LocaleInfo;
 import com.mokee.setupwizard.R;
-import com.mokee.setupwizard.SetupWizardActivity;
+import com.mokee.setupwizard.ui.SetupPageFragment;
 
 import android.app.Fragment;
-import android.os.Build;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.Locale;
 
-public class WelcomePage extends Fragment {
+public class WelcomePage extends Page {
 
-    private TextView mTextView;
-    private Spinner mSpinner;
+    public WelcomePage(Context context, SetupDataCallbacks callbacks, int titleResourceId) {
+        super(context, callbacks, titleResourceId);
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.page_welcome, null);
-        mTextView = (TextView) view.findViewById(R.id.welcome_summary);
-        mSpinner = (Spinner) view.findViewById(R.id.local_spinner);
+    public Fragment createFragment() {
+        Bundle args = new Bundle();
+        args.putString(Page.KEY_PAGE_ARGUMENT, getKey());
 
-        initView();
-        return view;
+        WelcomeFragment fragment = new WelcomeFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
-    private void initView() {
-        String model = Build.MODEL;
-        String originText = " " + mTextView.getText().toString();
-        mTextView.setText("Hi, " + model + originText);
+    @Override
+    public int getNextButtonResId() {
+        return R.string.next;
+    }
 
-        final ArrayAdapter<LocaleInfo> adapter = LocalePicker.constructAdapter(
-                getActivity(), R.layout.locale_picker_item, R.id.locale);
-        mSpinner.setAdapter(adapter);
-        mSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+    public static class WelcomeFragment extends SetupPageFragment {
 
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (((SetupWizardActivity) getActivity()).isFirstPage()) {
-                    Locale locale = adapter.getItem(position).getLocale();
+        @Override
+        protected void setUpPage() {
+            final Spinner spinner = (Spinner) mRootView.findViewById(R.id.locale_list);
+            final ArrayAdapter<LocalePicker.LocaleInfo> adapter = LocalePicker.constructAdapter(
+                    getActivity(), R.layout.locale_picker_item, R.id.locale);
+            spinner.setAdapter(adapter);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    Locale locale = adapter.getItem(i).getLocale();
                     LocalePicker.updateLocale(locale);
                 }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-
-        // Select current locale by default
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                int count = adapter.getCount();
-                Locale current = Locale.getDefault();
-                for (int i = 0; i < count; i++) {
-                    Locale locale = adapter.getItem(i).getLocale();
-                    if (current.equals(locale)) {
-                        mSpinner.setSelection(i);
-                        break;
-                    }
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
                 }
-                mSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        Locale locale = adapter.getItem(i).getLocale();
-                        LocalePicker.updateLocale(locale);
-                    }
+            });
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
+            // Pre-select current locale
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    int count = adapter.getCount();
+                    Locale current = Locale.getDefault();
+                    for (int i = 0; i < count; i++) {
+                        Locale locale = adapter.getItem(i).getLocale();
+                        if (current.equals(locale)) {
+                            spinner.setSelection(i);
+                            break;
+                        }
                     }
-                });
-            }
-        });
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i,
+                                long l) {
+                            Locale locale = adapter.getItem(i).getLocale();
+                            LocalePicker.updateLocale(locale);
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                        }
+                    });
+                }
+            });
+        }
+
+        @Override
+        protected int getLayoutResource() {
+            return R.layout.setup_welcome_page;
+        }
+
     }
+
 }

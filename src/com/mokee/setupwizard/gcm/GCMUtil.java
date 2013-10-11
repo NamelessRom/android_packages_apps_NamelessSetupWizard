@@ -14,29 +14,19 @@
  * limitations under the License.
  */
 
-package com.mokee.setupwizard.widget;
+package com.mokee.setupwizard.gcm;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import android.content.Context;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.Button;
 
-import com.mokee.setupwizard.SetupWizardActivity;
+public class GCMUtil {
 
-public class NavButton extends Button {
-
-    private Context mContext;
-
-    public NavButton(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        mContext = context;
-        this.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                ((SetupWizardActivity) mContext).goNextPage();
-            }
-        });
+    public static boolean googleServicesExist(Context context) {
+        return GooglePlayServicesUtil.isGooglePlayServicesAvailable(context) != ConnectionResult.SERVICE_MISSING;
     }
-
+    public static boolean playServicesUpdateRequired(Context context) {
+        return GooglePlayServicesUtil.isGooglePlayServicesAvailable(context) == ConnectionResult.SERVICE_VERSION_UPDATE_REQUIRED;
+    }
 }
