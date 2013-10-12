@@ -17,8 +17,8 @@
 -->
 <resources>
 
-    <string name="app_name">MoKeeSetupWizard</string>
-    <string name="product_name">Mokee Open Source</string>
+    <string name="app_name">MoKee SetupWizard</string>
+    <string name="product_name">Mokee OpenSource</string>
 
     <string name="next">Next</string>
     <string name="continue_label">Continue</string>
@@ -29,7 +29,7 @@
     <string name="create">Create</string>
     <string name="login">Login</string>
     <string name="ok">OK</string>
-    <string name="existing">Log in to existing account</string>
+    <string name="existing">Login to existing account</string>
     <string name="new_account">Create a new account</string>
     <string name="skip_anyway">Skip anyway</string>
     <string name="dont_skip">Don\'t skip</string>
@@ -45,8 +45,8 @@
     <string name="setup_current_date">Current date</string>
     <string name="setup_current_time">Current time</string>
     <string name="setup_inputmethod">Input method settings</string>
-    <string name="setup_inputmethod_summary">Select input method that you prefered</string>
-    <string name="setup_inputmethod_none">No InputMethod installed!</string>
+    <string name="setup_inputmethod_summary">Select the input method that you prefer</string>
+    <string name="setup_inputmethod_none">No IME installed!</string>
     <string name="setup_msg_no_network">WARNING: You won\'t be able to set up your accounts</string>
 
     <string name="sim_missing_summary">You need to refer to the SIM card instructions that came with your device.</string>
