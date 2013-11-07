@@ -42,6 +42,7 @@ LOCAL_AAPT_FLAGS += --extra-packages com.google.android.gms
 
 include $(BUILD_PACKAGE)
 
+include $(CLEAR_VARS)
 LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
     play:../../../../home/alex/android/external/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar
     #play:../../../external/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar
