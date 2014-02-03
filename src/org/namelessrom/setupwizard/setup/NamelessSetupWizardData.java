@@ -21,9 +21,9 @@ import android.content.Context;
 
 import org.namelessrom.setupwizard.R;
 
-public class MKSetupWizardData extends AbstractSetupData {
+public class NamelessSetupWizardData extends AbstractSetupData {
 
-    public MKSetupWizardData(Context context) {
+    public NamelessSetupWizardData(Context context) {
         super(context);
     }
 
