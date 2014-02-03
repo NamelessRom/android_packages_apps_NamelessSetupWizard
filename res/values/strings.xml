@@ -15,8 +15,8 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">MoKee SetupWizard</string>
-    <string name="product_name" translatable="false">Mokee OpenSource</string>
+    <string name="app_name">Nameless SetupWizard</string>
+    <string name="product_name" translatable="false">Nameless Rom</string>
 
     <string name="next">Next</string>
     <string name="continue_label">Continue</string>
@@ -35,7 +35,7 @@
     <string name="setup_complete">Setup is complete</string>
     <string name="setup_complete_summary" product="tablet">Congratulations! Your tablet is ready to rumble.</string>
     <string name="setup_complete_summary" product="default">Congratulations! Your phone is ready to rumble.</string>
-    <string name="setup_welcome">Welcome to MoKee OpenSource</string>
+    <string name="setup_welcome">Welcome to Nameless Rom</string>
     <string name="setup_welcome_summary" product="tablet">To get started setting up your tablet, select your language and continue.</string>
     <string name="setup_welcome_summary" product="default">To get started setting up your phone, select your language and continue.</string>
     <string name="setup_sim_missing">Insert SIM card</string>

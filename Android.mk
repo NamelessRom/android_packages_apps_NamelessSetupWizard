@@ -1,4 +1,5 @@
 # Copyright (C) 2013 The MoKee OpenSource Project
+# Modifications Copyright (C) 2014 The NamelessRom Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,8 +21,9 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_PACKAGE_NAME := MoKeeSetupWizard
+LOCAL_PACKAGE_NAME := NamelessSetupWizard
 LOCAL_CERTIFICATE := platform
+LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
@@ -31,7 +33,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     play
 
 # Include res dir from chips
-google_play_dir := ../../../external/google/google_play_services/libproject/google-play-services_lib/res
+google_play_dir := ../../../../home/alex/android/external/google/google_play_services/libproject/google-play-services_lib/res
 res_dir := $(google_play_dir) res
 
 LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dir))
@@ -41,6 +43,7 @@ LOCAL_AAPT_FLAGS += --extra-packages com.google.android.gms
 include $(BUILD_PACKAGE)
 
 LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
-    play:../../../external/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar
+    play:../../../../home/alex/android/external/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar
+    #play:../../../external/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar
 
-include $(BUILD_MULTI_PREBUILT)
+include $(call all-makefiles-under,$(LOCAL_PATH))

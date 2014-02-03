@@ -15,15 +15,15 @@
      limitations under the License.
 -->
 <resources>
-    <style name="Theme.MoKeeSetupWizard" parent="@android:style/Theme.Holo.Light">
+    <style name="Theme.NamelessSetupWizard" parent="@android:style/Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
         <item name="android:actionMenuTextColor">@android:color/holo_blue_light</item>
         <item name="android:actionMenuTextAppearance">@style/ActionButton</item>
     </style>
 
-    <style name="Theme.MoKeeSetupWizard.ActionBar" />
+    <style name="Theme.NamelessSetupWizard.ActionBar" />
 
-    <style name="Theme.MoKeeSetupWizard.ActionBar.Overlay">
+    <style name="Theme.NamelessSetupWizard.ActionBar.Overlay">
         <item name="android:windowActionBarOverlay">true</item>
     </style>
 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
      Copyright (C) 2013 The MoKee OpenSource Project
+     Modifications Copyright (C) 2014 The NamelessRom Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,8 +18,13 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mokee.setupwizard"
-    android:versionCode="2">
+    package="org.namelessrom.setupwizard"
+    android:versionCode="1"
+    android:versionName="1.0.0">
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.STATUS_BAR" />
@@ -41,21 +48,22 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
 
-    <application android:label="@string/app_name"
-        android:icon="@drawable/icon"
-        android:theme="@style/Theme.MoKeeSetupWizard"
-        android:name=".MKSetupWizard"	
-        android:sharedUserId="android.uid.system" >
+    <application
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/Theme.NamelessSetupWizard"
+        android:name=".NamelessSetupWizard"
+        android:sharedUserId="android.uid.system">
 
-        <activity android:name=".ui.SetupWizardActivity"
+        <activity
+            android:name=".ui.SetupWizardActivity"
             android:label="@string/product_name"
-            android:theme="@style/Theme.MoKeeSetupWizard.ActionBar.Overlay"
+            android:theme="@style/Theme.NamelessSetupWizard.ActionBar.Overlay"
             android:launchMode="singleTop"
             android:excludeFromRecents="true"
-            android:immersive="true" >
+            android:immersive="true">
 
-                <intent-filter android:priority="9" >
-
+            <intent-filter android:priority="9">
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.DEVICE_INITIALIZATION_WIZARD" />
 
