@@ -45,7 +45,7 @@ import org.namelessrom.setupwizard.NamelessSetupWizard;
 import org.namelessrom.setupwizard.R;
 import org.namelessrom.setupwizard.gcm.GCMUtil;
 import org.namelessrom.setupwizard.setup.AbstractSetupData;
-import org.namelessrom.setupwizard.setup.MKSetupWizardData;
+import org.namelessrom.setupwizard.setup.NamelessSetupWizardData;
 import org.namelessrom.setupwizard.setup.Page;
 import org.namelessrom.setupwizard.setup.PageList;
 import org.namelessrom.setupwizard.setup.SetupDataCallbacks;
@@ -83,7 +83,7 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         mSharedPreferences = getSharedPreferences(NamelessSetupWizard.SETTINGS_PREFERENCES, Context.MODE_PRIVATE);
         mSetupData = (AbstractSetupData) getLastNonConfigurationInstance();
         if (mSetupData == null) {
-            mSetupData = new MKSetupWizardData(this);
+            mSetupData = new NamelessSetupWizardData(this);
         }
 
         if (savedInstanceState != null) {
