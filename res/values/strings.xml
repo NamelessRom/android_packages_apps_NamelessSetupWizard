@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
      Copyright (C) 2013 The MoKee OpenSource Project
 
@@ -33,8 +34,8 @@
     <string name="dont_skip">Don\'t skip</string>
 
     <string name="setup_complete">Setup is complete</string>
-    <string name="setup_complete_summary" product="tablet">Congratulations! Your tablet is ready to rumble.</string>
-    <string name="setup_complete_summary" product="default">Congratulations! Your phone is ready to rumble.</string>
+    <string name="setup_complete_summary" product="tablet">Congratulations! Your tablet is ready to rumble.\n\n(Additional Wizards are launched now, if needed.)</string>
+    <string name="setup_complete_summary" product="default">Congratulations! Your phone is ready to rumble.(Additional Wizards are launched now, if needed.)</string>
     <string name="setup_welcome">Welcome to Nameless Rom</string>
     <string name="setup_welcome_summary" product="tablet">To get started setting up your tablet, select your language and continue.</string>
     <string name="setup_welcome_summary" product="default">To get started setting up your phone, select your language and continue.</string>

@@ -317,6 +317,14 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         }, null);
     }
 
+    private void launchAdditionalWizards() {
+        final Intent intent = new Intent();
+        intent.setAction("com.android.inputmethod.latin.setup.SetupWizardActivity");
+        try {
+            startActivity(intent);
+        } catch (Exception exc) { /* Doesn't exist? */ }
+    }
+
     private void finishSetup() {
         Settings.Global.putInt(getContentResolver(), Settings.Global.DEVICE_PROVISIONED, 1);
         Settings.Secure.putInt(getContentResolver(), Settings.Secure.USER_SETUP_COMPLETE, 1);
@@ -324,9 +332,11 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         ((NamelessSetupWizard) AppGlobals.getInitialApplication()).enableStatusBar();
         Intent intent = new Intent("android.intent.action.MAIN");
         intent.addCategory("android.intent.category.HOME");
-        disableSetupWizards(intent);
+        // TODO: activate after debugging is done.
+        //disableSetupWizards(intent);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.getFlags());
         startActivity(intent);
+        launchAdditionalWizards();
         finish();
     }
 
