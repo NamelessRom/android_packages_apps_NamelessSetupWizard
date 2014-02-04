@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
      Copyright (C) 2013 The MoKee OpenSource Project
 
@@ -15,7 +16,7 @@
      limitations under the License.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/SetupWizardCard">
+    style="@style/SetupWizardCard">
 
     <LinearLayout
         android:orientation="vertical"
@@ -33,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <View style="@style/SetupWizardDivider"/>
+                <View style="@style/SetupWizardDivider" />
 
                 <Spinner
                     android:id="@+id/timezone_list"
@@ -72,7 +73,7 @@
                         style="@style/SetupWizardSpinnerItem" />
                 </TwoLineListItem>
 
-                <View style="@style/SetupWizardDivider"/>
+                <View style="@style/SetupWizardDivider" />
 
                 <TwoLineListItem
                     android:id="@+id/time_item"
@@ -103,7 +104,7 @@
                         style="@style/SetupWizardSpinnerItem" />
                 </TwoLineListItem>
 
-                <View style="@style/SetupWizardDivider"/>
+                <View style="@style/SetupWizardDivider" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

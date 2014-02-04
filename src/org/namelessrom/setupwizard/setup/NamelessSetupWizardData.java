@@ -29,11 +29,12 @@ public class NamelessSetupWizardData extends AbstractSetupData {
 
     @Override
     protected PageList onNewPageList() {
-        return new PageList(new WelcomePage(mContext, this, R.string.setup_welcome),
+        return new PageList(
+                new WelcomePage(mContext, this, R.string.setup_welcome),
                 new GoogleAccountPage(mContext, this, R.string.setup_google_account),
                 new LocationSettingsPage(mContext, this, R.string.setup_location),
                 new DateTimePage(mContext, this, R.string.setup_datetime),
-                new InputMethodPage(mContext, this, R.string.setup_inputmethod),
+                //new InputMethodPage(mContext, this, R.string.setup_inputmethod),
                 new FinishPage(mContext, this, R.string.setup_complete)
         );
     }

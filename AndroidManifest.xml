@@ -63,12 +63,14 @@
             android:excludeFromRecents="true"
             android:immersive="true">
 
-            <intent-filter android:priority="9">
+            <!-- TODO: Restore intent-filter android:priority="9"-->
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.DEVICE_INITIALIZATION_WIZARD" />
 
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
