@@ -39,22 +39,22 @@ public abstract class AbstractSetupData implements SetupDataCallbacks {
 
     @Override
     public void onPageLoaded(Page page) {
-        for (int i = 0; i < mListeners.size(); i++) {
-            mListeners.get(i).onPageLoaded(page);
+        for (SetupDataCallbacks mListener : mListeners) {
+            mListener.onPageLoaded(page);
         }
     }
 
     @Override
     public void onPageTreeChanged() {
-        for (int i = 0; i < mListeners.size(); i++) {
-            mListeners.get(i).onPageTreeChanged();
+        for (SetupDataCallbacks mListener : mListeners) {
+            mListener.onPageTreeChanged();
         }
     }
 
     @Override
     public void onPageFinished(Page page) {
-        for (int i = 0; i < mListeners.size(); i++) {
-            mListeners.get(i).onPageFinished(page);
+        for (SetupDataCallbacks mListener : mListeners) {
+            mListener.onPageFinished(page);
         }
     }
 
