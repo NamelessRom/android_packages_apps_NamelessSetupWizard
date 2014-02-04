@@ -251,8 +251,9 @@ public class DateTimePage extends Page {
         final long date = Calendar.getInstance().getTimeInMillis();
         try {
             XmlResourceParser xrp = context.getResources().getXml(R.xml.timezones);
-            while (xrp.next() != XmlResourceParser.START_TAG)
-                continue;
+            while (xrp.next() != XmlResourceParser.START_TAG) {
+                // continue
+            }
             xrp.next();
             while (xrp.getEventType() != XmlResourceParser.END_TAG) {
                 while (xrp.getEventType() != XmlResourceParser.START_TAG) {

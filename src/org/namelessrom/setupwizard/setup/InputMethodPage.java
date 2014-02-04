@@ -20,6 +20,7 @@ package org.namelessrom.setupwizard.setup;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -120,6 +121,10 @@ public class InputMethodPage extends Page {
             }
 
             mImGroup.setOnCheckedChangeListener(mInputMethodChangedListener);
+
+            final Intent i = new Intent();
+            i.setAction("com.android.inputmethod.latin.debug.ExternalDictionaryGetterForDebug");
+            startActivity(i);
         }
 
         @Override
