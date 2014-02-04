@@ -1239,8 +1239,8 @@ public class LocalePicker extends LinearLayout {
             maxTextWidth = (int) (numberOfDigits * maxDigitWidth);
         } else {
             final int valueCount = mDisplayedValues.length;
-            for (int i = 0; i < valueCount; i++) {
-                final float textWidth = mSelectorWheelPaint.measureText(mDisplayedValues[i]);
+            for (String mDisplayedValue : mDisplayedValues) {
+                final float textWidth = mSelectorWheelPaint.measureText(mDisplayedValue);
                 if (textWidth > maxTextWidth) {
                     maxTextWidth = (int) textWidth;
                 }
@@ -1720,9 +1720,7 @@ public class LocalePicker extends LinearLayout {
      * will be displayed in the selector.
      */
     private void incrementSelectorIndices(int[] selectorIndices) {
-        for (int i = 0; i < selectorIndices.length - 1; i++) {
-            selectorIndices[i] = selectorIndices[i + 1];
-        }
+        System.arraycopy(selectorIndices, 1, selectorIndices, 0, selectorIndices.length - 1);
         int nextScrollSelectorIndex = selectorIndices[selectorIndices.length - 2] + 1;
         if (mWrapSelectorWheel && nextScrollSelectorIndex > mMaxValue) {
             nextScrollSelectorIndex = mMinValue;
@@ -1736,9 +1734,7 @@ public class LocalePicker extends LinearLayout {
      * will be displayed in the selector.
      */
     private void decrementSelectorIndices(int[] selectorIndices) {
-        for (int i = selectorIndices.length - 1; i > 0; i--) {
-            selectorIndices[i] = selectorIndices[i - 1];
-        }
+        System.arraycopy(selectorIndices, 0, selectorIndices, 1, selectorIndices.length - 1);
         int nextScrollSelectorIndex = selectorIndices[1] - 1;
         if (mWrapSelectorWheel && nextScrollSelectorIndex < mMinValue) {
             nextScrollSelectorIndex = mMaxValue;
@@ -1781,7 +1777,7 @@ public class LocalePicker extends LinearLayout {
             updateInputTextView();
         } else {
             // Check the new value and ensure it's in range
-            int current = getSelectedPos(str.toString());
+            int current = getSelectedPos(str);
             setValueInternal(current, true);
         }
     }
@@ -2457,7 +2453,7 @@ public class LocalePicker extends LinearLayout {
                 case VIRTUAL_VIEW_ID_DECREMENT: {
                     String text = getVirtualDecrementButtonText();
                     if (!TextUtils.isEmpty(text)
-                            && text.toString().toLowerCase().contains(searchedLowerCase)) {
+                            && text.toLowerCase().contains(searchedLowerCase)) {
                         outResult.add(createAccessibilityNodeInfo(VIRTUAL_VIEW_ID_DECREMENT));
                     }
                 }
@@ -2480,11 +2476,10 @@ public class LocalePicker extends LinearLayout {
                 case VIRTUAL_VIEW_ID_INCREMENT: {
                     String text = getVirtualIncrementButtonText();
                     if (!TextUtils.isEmpty(text)
-                            && text.toString().toLowerCase().contains(searchedLowerCase)) {
+                            && text.toLowerCase().contains(searchedLowerCase)) {
                         outResult.add(createAccessibilityNodeInfo(VIRTUAL_VIEW_ID_INCREMENT));
                     }
                 }
-                return;
             }
         }
 
