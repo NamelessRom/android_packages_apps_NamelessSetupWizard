@@ -168,6 +168,12 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
                 final Page currentPage = mPageList.get(currentItem);
                 if (currentPage.getId() == R.string.setup_complete) {
                     finishSetup();
+                } else if (currentPage.getId() == R.string.setup_inputmethod) {
+                    final Intent intent = new Intent();
+                    intent.setAction("com.android.inputmethod.latin.setup.SetupWizardActivity");
+                    try {
+                        startActivity(intent);
+                    } catch (Exception exc) { /* Doesn't exist? */ }
                 } else {
                     mViewPager.setCurrentItem(currentItem + 1, true);
                 }
@@ -324,7 +330,8 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         ((NamelessSetupWizard) AppGlobals.getInitialApplication()).enableStatusBar();
         Intent intent = new Intent("android.intent.action.MAIN");
         intent.addCategory("android.intent.category.HOME");
-        disableSetupWizards(intent);
+        // TODO: activate after debugging is done.
+        //disableSetupWizards(intent);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.getFlags());
         startActivity(intent);
         finish();
