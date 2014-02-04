@@ -324,7 +324,7 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         ((NamelessSetupWizard) AppGlobals.getInitialApplication()).enableStatusBar();
         Intent intent = new Intent("android.intent.action.MAIN");
         intent.addCategory("android.intent.category.HOME");
-        disableSetupWizards(intent);
+        //disableSetupWizards(intent);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.getFlags());
         startActivity(intent);
         finish();
