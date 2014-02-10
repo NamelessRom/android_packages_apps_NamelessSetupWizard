@@ -23,8 +23,11 @@ import android.os.Bundle;
 
 import org.namelessrom.setupwizard.R;
 import org.namelessrom.setupwizard.ui.SetupPageFragment;
+import org.namelessrom.setupwizard.ui.SetupWizardActivity;
 
 public class FinishPage extends Page {
+
+    private static boolean sAdditionalLaunched = false;
 
     public FinishPage(Context context, SetupDataCallbacks callbacks, int titleResourceId) {
         super(context, callbacks, titleResourceId);
@@ -50,6 +53,10 @@ public class FinishPage extends Page {
 
         @Override
         protected void setUpPage() {
+            if (!sAdditionalLaunched) {
+                ((SetupWizardActivity) getActivity()).launchAdditionalWizards();
+                sAdditionalLaunched = true;
+            }
         }
 
         @Override
