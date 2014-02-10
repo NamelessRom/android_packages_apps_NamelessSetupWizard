@@ -20,9 +20,11 @@ package org.namelessrom.setupwizard.setup;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import org.namelessrom.setupwizard.R;
 import org.namelessrom.setupwizard.ui.SetupPageFragment;
+import org.namelessrom.setupwizard.ui.SetupWizardActivity;
 
 public class FinishPage extends Page {
 
@@ -50,6 +52,12 @@ public class FinishPage extends Page {
 
         @Override
         protected void setUpPage() {
+            mRootView.findViewById(R.id.additional_wizards_button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((SetupWizardActivity) getActivity()).launchAdditionalWizards();
+                }
+            });
         }
 
         @Override
