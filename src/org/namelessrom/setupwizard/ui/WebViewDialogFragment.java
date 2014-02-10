@@ -32,7 +32,6 @@ public class WebViewDialogFragment extends DialogFragment {
     public static String TAG = WebViewDialogFragment.class.getSimpleName();
 
     private View mRootView;
-    private WebView mWebView;
     private String mUri;
     private Dialog mDialog;
 
@@ -54,7 +53,7 @@ public class WebViewDialogFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         mRootView = getActivity().getLayoutInflater().inflate(R.layout.terms_webview, null, false);
-        mWebView = (WebView) mRootView.findViewById(R.id.webview);
+        final WebView mWebView = (WebView) mRootView.findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setUseWideViewPort(true);
         mWebView.loadUrl(mUri);

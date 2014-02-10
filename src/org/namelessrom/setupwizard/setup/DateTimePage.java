@@ -237,13 +237,12 @@ public class DateTimePage extends Page {
         final TimeZoneComparator comparator = new TimeZoneComparator(sortKey);
         final List<HashMap<String, Object>> sortedList = getZones(context);
         Collections.sort(sortedList, comparator);
-        final SimpleAdapter adapter = new SimpleAdapter(context,
+
+        return new SimpleAdapter(context,
                 sortedList,
                 R.layout.date_time_setup_custom_list_item_2,
                 from,
                 to);
-
-        return adapter;
     }
 
     private static List<HashMap<String, Object>> getZones(Context context) {
@@ -398,8 +397,7 @@ public class DateTimePage extends Page {
         private TimePickerDialog.OnTimeSetListener mOnTimeSetListener;
 
         public static TimePickerFragment newInstance() {
-            TimePickerFragment frag = new TimePickerFragment();
-            return frag;
+            return new TimePickerFragment();
         }
 
         private void setOnTimeSetListener(TimePickerDialog.OnTimeSetListener onTimeSetListener) {
@@ -433,8 +431,7 @@ public class DateTimePage extends Page {
         private DatePickerDialog.OnDateSetListener mOnDateSetListener;
 
         public static DatePickerFragment newInstance() {
-            DatePickerFragment frag = new DatePickerFragment();
-            return frag;
+            return new DatePickerFragment();
         }
 
         private void setOnDateSetListener(DatePickerDialog.OnDateSetListener onDateSetListener) {
