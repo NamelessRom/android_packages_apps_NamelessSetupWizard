@@ -23,6 +23,7 @@ import android.os.Bundle;
 
 import org.namelessrom.setupwizard.R;
 import org.namelessrom.setupwizard.ui.SetupPageFragment;
+import org.namelessrom.setupwizard.ui.SetupWizardActivity;
 
 public class FinishPage extends Page {
 
@@ -50,6 +51,7 @@ public class FinishPage extends Page {
 
         @Override
         protected void setUpPage() {
+            ((SetupWizardActivity) getActivity()).launchAdditionalWizards();
         }
 
         @Override
