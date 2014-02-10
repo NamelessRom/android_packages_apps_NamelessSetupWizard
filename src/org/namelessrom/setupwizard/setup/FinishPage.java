@@ -20,11 +20,16 @@ package org.namelessrom.setupwizard.setup;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import org.namelessrom.setupwizard.R;
 import org.namelessrom.setupwizard.ui.SetupPageFragment;
+import org.namelessrom.setupwizard.ui.SetupWizardActivity;
 
 public class FinishPage extends Page {
+
+    private static boolean sAdditionalWizardsLaunched = false;
 
     public FinishPage(Context context, SetupDataCallbacks callbacks, int titleResourceId) {
         super(context, callbacks, titleResourceId);
@@ -50,6 +55,18 @@ public class FinishPage extends Page {
 
         @Override
         protected void setUpPage() {
+            final Button launchAdditionalWizards
+                    = (Button) mRootView.findViewById(R.id.additional_wizards_button);
+            if (sAdditionalWizardsLaunched) {
+                launchAdditionalWizards.setText(R.string.btn_additional_wizards_relaunch);
+            }
+            launchAdditionalWizards.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((SetupWizardActivity) getActivity()).launchAdditionalWizards();
+                    sAdditionalWizardsLaunched = true;
+                }
+            });
         }
 
         @Override

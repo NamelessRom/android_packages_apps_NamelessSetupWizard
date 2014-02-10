@@ -42,6 +42,18 @@
                     style="@style/SetupWizardPageSummary"
                     android:text="@string/setup_complete_summary" />
 
+                <View
+                    style="@style/SetupWizardDivider"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="12dp" />
+
+                <Button
+                    android:id="@+id/additional_wizards_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/ActionButton"
+                    android:text="@string/btn_additional_wizards" />
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

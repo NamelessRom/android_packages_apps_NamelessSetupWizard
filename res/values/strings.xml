@@ -2,6 +2,7 @@
 
 <!--
      Copyright (C) 2013 The MoKee OpenSource Project
+     Modifications Copyright (C) 2014 The NamelessRom Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -34,7 +35,7 @@
     <string name="dont_skip">Don\'t skip</string>
 
     <string name="setup_complete">Setup is complete</string>
-    <string name="setup_complete_summary">Congratulations! You have finished setting up your device.\n\n(Additional wizards are launched now, if needed.)</string>
+    <string name="setup_complete_summary">Congratulations! You have finished setting up your device.</string>
     <string name="setup_welcome">Welcome to Nameless Rom</string>
     <string name="setup_welcome_summary">To get started setting up your device, select your language and continue.</string>
     <string name="setup_sim_missing">Insert SIM card</string>
@@ -51,6 +52,9 @@
 
     <string name="sim_missing_summary">You need to refer to the SIM card instructions that came with your device.</string>
     <string name="google_account_summary">Do you want to set up a Google account?</string>
+
+    <string name="btn_additional_wizards">Launch additional wizards (recommended)</string>
+    <string name="btn_additional_wizards_relaunch">Relaunch additional wizards</string>
     <string name="btn_google_account">Set up Google account</string>
 
     <string name="location_access_title">Access to my location</string>

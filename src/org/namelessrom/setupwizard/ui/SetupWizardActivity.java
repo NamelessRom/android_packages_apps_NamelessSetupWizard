@@ -317,7 +317,7 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         }, null);
     }
 
-    private void launchAdditionalWizards() {
+    public void launchAdditionalWizards() {
         final Intent intent = new Intent();
         intent.setAction("com.android.inputmethod.latin.setup.SetupWizardActivity");
         try {
@@ -335,7 +335,6 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         disableSetupWizards(intent);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.getFlags());
         startActivity(intent);
-        launchAdditionalWizards();
         finish();
     }
 
