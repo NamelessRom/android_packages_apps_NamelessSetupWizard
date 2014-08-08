@@ -23,10 +23,8 @@
   <string name="prev">Anterior</string>
   <string name="skip">Omite</string>
   <string name="finish">Finalizează</string>
-  <string name="cancel">Anulează</string>
   <string name="create">Creare</string>
   <string name="login">Logare</string>
-  <string name="ok">OK</string>
   <string name="existing">Conectaţi-vă la un cont existent</string>
   <string name="new_account">Creează un cont nou</string>
   <string name="skip_anyway">Omite totuși</string>
