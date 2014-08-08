@@ -65,7 +65,7 @@ public class WebViewDialogFragment extends DialogFragment {
             mDialog = new AlertDialog.Builder(getActivity())
                     .setView(mRootView)
                     .setCancelable(false)
-                    .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
