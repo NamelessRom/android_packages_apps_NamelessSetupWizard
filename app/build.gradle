@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+    }
+
+    signingConfigs {
+        release {
+            def Properties localProps = new Properties()
+            localProps.load(new FileInputStream(file('../local.properties')))
+            def Properties keyProps = new Properties()
+            assert localProps['keystore.props.file'];
+            keyProps.load(new FileInputStream(file(localProps['keystore.props.file'])))
+            storeFile file(keyProps["store"])
+            keyAlias keyProps["alias"]
+            storePassword keyProps["storePass"]
+            keyPassword keyProps["pass"]
+        }
+    }
+
+    buildTypes {
+        release {
+            runProguard true
+            signingConfig signingConfigs.release
+            proguardFile 'src/main/proguard.flags'
+            zipAlign true
+            debuggable false
+        }
+        debug {
+            runProguard true
+            signingConfig signingConfigs.release
+            proguardFile 'src/main/proguard.flags'
+            zipAlign true
+            debuggable true
+        }
+    }
+
+    lintOptions {
+        abortOnError true
+        checkAllWarnings true
+        disable 'HardcodedDebugMode', 'ValidFragment', 'MissingTranslation', 'ExtraTranslation'
+    }
+
+    dexOptions {
+        incremental true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
+    }
+
+    productFlavors {}
+}
+
+dependencies {
+    compile 'com.android.support:support-v13:20+'
+    // has to match with the play services used in the rom
+    compile 'com.google.android.gms:play-services:5.0.89'
+}
