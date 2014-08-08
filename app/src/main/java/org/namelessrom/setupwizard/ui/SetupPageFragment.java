@@ -31,9 +31,9 @@ import org.namelessrom.setupwizard.setup.SetupDataCallbacks;
 public abstract class SetupPageFragment extends Fragment {
 
     protected SetupDataCallbacks mCallbacks;
-    protected String mKey;
-    protected Page mPage;
-    protected View mRootView;
+    protected String             mKey;
+    protected Page               mPage;
+    protected View               mRootView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public abstract class SetupPageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         mRootView = inflater.inflate(getLayoutResource(), container, false);
         TextView titleView = (TextView) mRootView.findViewById(android.R.id.title);
         titleView.setText(getTitleResource());

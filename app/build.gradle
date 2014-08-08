@@ -59,7 +59,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v13:20+'
+    compile 'com.android.support:support-v13:19+'
     // has to match with the play services used in the rom
     compile 'com.google.android.gms:play-services:4.3.23'
 }

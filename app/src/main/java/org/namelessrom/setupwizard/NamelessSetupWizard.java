@@ -29,10 +29,10 @@ public class NamelessSetupWizard extends Application {
 
     public static final String ACCOUNT_TYPE_GOOGLE = "com.google";
 
-    public static final String EXTRA_FIRST_RUN = "firstRun";
+    public static final String EXTRA_FIRST_RUN  = "firstRun";
     public static final String EXTRA_ALLOW_SKIP = "allowSkip";
 
-    public static final String GCM_PREFERENCES = "org.namelessrom.setupwizard.gcm";
+    public static final String GCM_PREFERENCES      = "org.namelessrom.setupwizard.gcm";
     public static final String SETTINGS_PREFERENCES = "org.namelessrom.setupwizard_preferences";
 
     private StatusBarManager mStatusBarManager;
@@ -46,13 +46,12 @@ public class NamelessSetupWizard extends Application {
     public void disableStatusBar() {
         mStatusBarManager.disable(StatusBarManager.DISABLE_EXPAND
                 | StatusBarManager.DISABLE_NOTIFICATION_ALERTS
-                | StatusBarManager.DISABLE_NOTIFICATION_TICKER | StatusBarManager.DISABLE_RECENT
+                | StatusBarManager.DISABLE_NOTIFICATION_TICKER
+                | StatusBarManager.DISABLE_RECENT
                 | StatusBarManager.DISABLE_HOME
                 | StatusBarManager.DISABLE_SEARCH);
     }
 
-    public void enableStatusBar() {
-        mStatusBarManager.disable(StatusBarManager.DISABLE_NONE);
-    }
+    public void enableStatusBar() { mStatusBarManager.disable(StatusBarManager.DISABLE_NONE); }
 
 }

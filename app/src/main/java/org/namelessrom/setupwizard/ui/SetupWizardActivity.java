@@ -59,10 +59,10 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
     private static final String TAG = SetupWizardActivity.class.getSimpleName();
 
     private static final String GOOGLE_SETUPWIZARD_PACKAGE = "com.google.android.setupwizard";
-    private static final String KEY_SIM_MISSING_SHOWN = "sim-missing-shown";
-    private static final String KEY_G_ACCOUNT_SHOWN = "g-account-shown";
+    private static final String KEY_SIM_MISSING_SHOWN      = "sim-missing-shown";
+    private static final String KEY_G_ACCOUNT_SHOWN        = "g-account-shown";
 
-    private ViewPager mViewPager;
+    private ViewPager      mViewPager;
     private MKPagerAdapter mPagerAdapter;
 
     private Button mNextButton;
@@ -80,7 +80,8 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setup_main);
         ((NamelessSetupWizard) AppGlobals.getInitialApplication()).disableStatusBar();
-        mSharedPreferences = getSharedPreferences(NamelessSetupWizard.SETTINGS_PREFERENCES, Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences(NamelessSetupWizard.SETTINGS_PREFERENCES,
+                Context.MODE_PRIVATE);
         mSetupData = (AbstractSetupData) getLastNonConfigurationInstance();
         if (mSetupData == null) {
             mSetupData = new NamelessSetupWizardData(this);
@@ -91,6 +92,7 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
         } else {
             mSharedPreferences.edit().putBoolean(KEY_SIM_MISSING_SHOWN, false).commit();
         }
+
         mNextButton = (Button) findViewById(R.id.next_button);
         mPrevButton = (Button) findViewById(R.id.prev_button);
         mSetupData.registerListener(this);
@@ -140,8 +142,8 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         mSetupData.unregisterListener(this);
+        super.onDestroy();
     }
 
     @Override
@@ -188,8 +190,8 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
     }
 
     private void removeSetupPage(final Page page, boolean animate) {
-        if (page == null || getPage(page.getKey()) == null || page.getId() == R.string.setup_complete)
-            return;
+        if (page == null || getPage(page.getKey()) == null ||
+                page.getId() == R.string.setup_complete) { return; }
         final int position = mViewPager.getCurrentItem();
         if (animate) {
             mViewPager.setCurrentItem(0);
@@ -280,7 +282,8 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
     private void removeUnNeededPages() {
         boolean pagesRemoved = false;
         Page page = mPageList.findPage(R.string.setup_google_account);
-        if (page != null && (!GCMUtil.googleServicesExist(SetupWizardActivity.this) || accountExists(NamelessSetupWizard.ACCOUNT_TYPE_GOOGLE))) {
+        if (page != null && (!GCMUtil.googleServicesExist(SetupWizardActivity.this) ||
+                accountExists(NamelessSetupWizard.ACCOUNT_TYPE_GOOGLE))) {
             removeSetupPage(page, false);
             pagesRemoved = true;
         }
@@ -291,30 +294,40 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
 
     private void disableSetupWizards(Intent intent) {
         final PackageManager pm = getPackageManager();
-        final List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        final List<ResolveInfo> resolveInfos =
+                pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
         for (ResolveInfo info : resolveInfos) {
             if (GOOGLE_SETUPWIZARD_PACKAGE.equals(info.activityInfo.packageName)) {
-                final ComponentName componentName = new ComponentName(info.activityInfo.packageName, info.activityInfo.name);
-                pm.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                final ComponentName componentName =
+                        new ComponentName(info.activityInfo.packageName, info.activityInfo.name);
+                pm.setComponentEnabledSetting(componentName,
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                        PackageManager.DONT_KILL_APP);
             }
         }
-        pm.setComponentEnabledSetting(getComponentName(), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        pm.setComponentEnabledSetting(getComponentName(),
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
 
     public void launchGoogleAccountSetup() {
         Bundle bundle = new Bundle();
         bundle.putBoolean(NamelessSetupWizard.EXTRA_FIRST_RUN, true);
         bundle.putBoolean(NamelessSetupWizard.EXTRA_ALLOW_SKIP, true);
-        AccountManager.get(this).addAccount(NamelessSetupWizard.ACCOUNT_TYPE_GOOGLE, null, null, bundle, this, new AccountManagerCallback<Bundle>() {
-            @Override
-            public void run(AccountManagerFuture<Bundle> bundleAccountManagerFuture) {
-                if (isDestroyed()) return; //There is a change this activity has been torn down.
-                Page page = mPageList.findPage(R.string.setup_google_account);
-                if (page != null) {
-                    onPageFinished(page);
-                }
-            }
-        }, null);
+        AccountManager.get(this)
+                .addAccount(NamelessSetupWizard.ACCOUNT_TYPE_GOOGLE, null, null, bundle, this,
+                        new AccountManagerCallback<Bundle>() {
+                            @Override
+                            public void run(
+                                    AccountManagerFuture<Bundle> bundleAccountManagerFuture) {
+                                if (isDestroyed()) {
+                                    return; //There is a change this activity has been torn down.
+                                }
+                                Page page = mPageList.findPage(R.string.setup_google_account);
+                                if (page != null) {
+                                    onPageFinished(page);
+                                }
+                            }
+                        }, null);
     }
 
     public void launchAdditionalWizards() {
@@ -328,7 +341,8 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
     private void finishSetup() {
         Settings.Global.putInt(getContentResolver(), Settings.Global.DEVICE_PROVISIONED, 1);
         Settings.Secure.putInt(getContentResolver(), Settings.Secure.USER_SETUP_COMPLETE, 1);
-        UserManager.get(this).setUserName(UserHandle.myUserId(), getString(com.android.internal.R.string.owner_name));
+        UserManager.get(this).setUserName(UserHandle.myUserId(),
+                getString(com.android.internal.R.string.owner_name));
         ((NamelessSetupWizard) AppGlobals.getInitialApplication()).enableStatusBar();
         Intent intent = new Intent("android.intent.action.MAIN");
         intent.addCategory("android.intent.category.HOME");
@@ -362,8 +376,7 @@ public class SetupWizardActivity extends Activity implements SetupDataCallbacks 
 
         @Override
         public int getCount() {
-            if (mPageList == null)
-                return 0;
+            if (mPageList == null) { return 0; }
             return Math.min(mCutOffPage, mPageList.size());
         }
 

@@ -17,23 +17,9 @@
 -->
 <resources>
 
-    <style name="Theme.NamelessSetupWizard" parent="@android:style/Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
+    <style name="Theme.NamelessSetupWizard" parent="@android:style/Theme.Holo.Light.NoActionBar.TranslucentDecor">
         <item name="android:actionMenuTextColor">@android:color/holo_blue_light</item>
         <item name="android:actionMenuTextAppearance">@style/ActionButton</item>
-    </style>
-
-    <style name="Theme.NamelessSetupWizard.ActionBar" />
-
-    <style name="Theme.NamelessSetupWizard.ActionBar.Overlay">
-        <item name="android:windowActionBarOverlay">true</item>
-    </style>
-
-    <style name="Widget.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@drawable/ab_bg</item>
-        <item name="android:displayOptions">disableHome|showCustom</item>
-        <item name="android:customNavigationLayout">@layout/action_bar_nav</item>
-        <item name="android:paddingTop">0dp</item>
     </style>
 
     <style name="RootLayout">
@@ -114,7 +100,7 @@
     </style>
 
     <style name="SetupWizardDivider">
-        <item name="android:id">@+id/divider</item>
+        <item name="android:id">@id/divider</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:layout_marginTop">8dp</item>

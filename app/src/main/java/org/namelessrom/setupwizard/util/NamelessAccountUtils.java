@@ -23,16 +23,17 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 
 public class NamelessAccountUtils {
-    public static boolean isNetworkConnected(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+    public static boolean isNetworkConnected(final Context context) {
+        final ConnectivityManager connectivityManager =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        final NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
 
-    public static void tryEnablingWifi(Context context) {
-        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        if (!wifiManager.isWifiEnabled()) {
+    public static void tryEnablingWifi(final Context context) {
+        final WifiManager wifiManager =
+                (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        if (wifiManager != null && !wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(true);
         }
     }
