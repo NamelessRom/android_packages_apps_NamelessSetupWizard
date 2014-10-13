@@ -16,4 +16,44 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources/>
+<resources>
+  <string name="app_name">Майстер налаштування Nameless</string>
+  <string name="next">Далі</string>
+  <string name="continue_label">Продовжити</string>
+  <string name="prev">Попередня</string>
+  <string name="skip">Пропустити</string>
+  <string name="finish">Завершити</string>
+  <string name="create">Створити</string>
+  <string name="login">Увійти</string>
+  <string name="existing">Увійти в існуючий обліковий запис</string>
+  <string name="new_account">Створити новий обліковий запис</string>
+  <string name="skip_anyway">У всякому разі пропустити</string>
+  <string name="dont_skip">Не пропускати</string>
+  <string name="setup_complete">Встановлення завершено</string>
+  <string name="setup_complete_summary">Вітаємо! Ви завершили налаштування пристрою.</string>
+  <string name="setup_welcome">Ласкаво просимо до Nameless Rom</string>
+  <string name="setup_welcome_summary">Для початку налаштуйте свій телефон, оберіть мову та натисніть продовжити.</string>
+  <string name="setup_sim_missing">Вставте SIM карту</string>
+  <string name="setup_google_account">Обліковий запис Google</string>
+  <string name="setup_location">Налаштування місцезнаходження</string>
+  <string name="setup_datetime">Налаштування дати &amp; та часу</string>
+  <string name="setup_current_date">Поточна дата</string>
+  <string name="setup_current_time">Поточний час</string>
+  <string name="setup_inputmethod">Налаштування методів вводу</string>
+  <string name="setup_inputmethod_summary">Виберіть метод введення тексту</string>
+  <string name="setup_inputmethod_none">Немає жодного встановлено методу вводу!</string>
+  <string name="setup_msg_no_network">УВАГА: Ви не зможете налаштувати свої облікові записи</string>
+  <string name="setup_warning_skip_wifi">Увага: You may incur extra carrier data charges.\n\nНалаштування пристрою вимагатиме підключення до мережі.</string>
+  <string name="sim_missing_summary">Зверніться до інструкції по встановленні SIM-карти для вашого пристрою.</string>
+  <string name="google_account_summary">Бажаєте налаштувати обліковий запис Google?</string>
+  <string name="btn_additional_wizards">Запуск додаткового майстра налаштування (рекомендовано)</string>
+  <string name="btn_additional_wizards_relaunch">Відновити додатковий майстер налаштування</string>
+  <string name="btn_google_account">Налаштуйте обліковий запис Google</string>
+  <string name="location_access_title">Доступ до мого місцезнаходження</string>
+  <string name="location_access_summary">Надавати програмам дані про місцезнаходження, якщо вони про це запопросили</string>
+  <string name="location_sources_heading">Джерела місцезнаходження</string>
+  <string name="location_gps">Супутники GPS</string>
+  <string name="location_street_level">Дозволити використовувати GPS для визначення місцезнаходження</string>
+  <string name="location_network_based">Місцезнаходення по WiFi &amp; мобільних мережах</string>
+  <string name="location_neighborhood_level">Дозволити програмам використовувати службу місцезнаходження Google для пришвидшення визначення вашого місцезнаходження. Анонімні дані про місцезнаходження збиратиметься та відсилатиметься в Google.</string>
+</resources>
